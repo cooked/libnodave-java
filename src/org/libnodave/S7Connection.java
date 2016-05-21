@@ -406,8 +406,8 @@ public abstract class S7Connection {
 	}
 
 	public int useResult(ResultSet rs, int number) {
-		System.out.println(
-			"rs.getNumResults: " + rs.getNumResults() + " number: " + number);
+		if (Nodave.Debug!=0)
+			System.out.println("rs.getNumResults: " + rs.getNumResults() + " number: " + number);
 		if (rs.getNumResults() > number) {
 			dataPointer = rs.results[number].bufferStart;
 			return 0;
