@@ -231,6 +231,15 @@ public abstract class S7Connection {
 		return p1;
 	}
 
+	// 2011.10.10 SC: added using read-like structure
+	public PDU prepareWriteRequest() {
+		//int errorState = 0;
+		semaphore.enter();
+		PDU p1 = new PDU(msgIn, PDUstartIn);
+		p1.prepareWriteRequest();
+		return p1;
+	}
+		
 	/*
 	    Write len bytes to PLC memory area "area", data block DBnum. 
 	*/
