@@ -1,0 +1,62 @@
+<applet code=org.visual.hmi.viewer.hmiViewer width=900 height=600>
+<param name="rights" value="1"><!-- User may modify values -->
+<param name="defaultHint" value="Move mouse cursor over some element for more information."><!-- Default hint text if mouse is not over an element -->
+<param name="font" value=""><!-- You may set a font here -->
+<param name="bkgnd" value="all9.jpg"> <!-- background image -->
+<param name="trends" value=""> <!-- usually a CGI script or PHP page that will show a trend diagramm based on machine and variable name -->
+<param name="machine" value=""><!-- passed to trend script -->
+<param name="refresh" value="500"> <!-- refresh time in milliseconds -->
+<param name="imageDir" value=""> <!-- images directory -->
+<param name="communicator" value="org.visual.hmi.protocol.siemens.ISOTCP_CI"> <!-- communication plugin class. This thing gets a list of all values that need to be read from the PLC and provides the values -->
+<param name="host" value="172.16.17.49"> <!-- host (PLC) IP. This parameter is specific to the communication plugin class -->
+<param name="port" value="102"> <!-- host (PLC) port number. This parameter is specific to the communication plugin class -->
+<param name="rack" value="0"> <!--PLC rack number. This parameter is specific to the communication plugin class -->
+<param name="slot" value="2"> <!--PLC slot number. Set to 3 for S7-4xx. This parameter is specific to the communication plugin class -->
+<param name="family" value="any"> <!--PLC family. Set to 200 for S7-200 with CP243. This parameter is specific to the communication plugin class -->
+<param name="davedebug" value="65535"> <!--PLC interface debug flags. This parameter is specific to the communication plugin class -->
+<!-- Elements that make up our page. Parameter line: -->
+<!-- 	hmiDigital	: HMI element plugin class name -->
+<!-- 	0		: upper left corner x coordinate -->
+<!-- 	135		: upper left corner y coordinate -->
+<!-- 	240		: horizontal size -->
+<!-- 	33		: vertical size -->
+<!-- 	1,2,3		: color set for value below minimum -->
+<!-- 	4,5,6		: color set for value within limits -->
+<!-- 	7,8,9		: color set for value above maximum -->
+<!-- 	DB1:W6		: variable, must be understood by the communication plugin class -->
+<!-- 	for S7		: from data block 1 (DB1:) get an unsigned int (word, W) beginning at byte address (DBB) 6 -->
+<param name="0" value="hmiDigital,0,135,240,33,1,2,3,4,5,6,7,8,9,DB1:W6,0,100,DB1:DBW6 unsigned , ,0">
+<param name="Hint0" value="Shows the value of DB1:DBW6 as an unsigned integer. Variable name is DB1:W6. W means unsigned word(2 bytes).6 is the start address.">
+<param name="1" value="hmiDigital,0,165,240,33,1,2,3,4,5,6,7,8,9,DB1:I6,0,100,DB1:DBW6 signed , ,0">
+<param name="Hint1" value="Shows the value of DB1:DBW6 as a signed integer. Variable name is DB1:I6. I means signed int(2 bytes).6 is the start address.">
+<param name="2" value="hmiDigital,0,53,240,32,1,2,3,4,5,6,7,8,9,M:F12,0,100,MD12 float , ,5">
+<param name="Hint2" value="Shows the value of DB1:DBD12 as a float. Variable name is DB1:F12. F means float (4 bytes).12 is the start address. Variable spans bytes 12 to 15.">
+<param name="3" value="hmiRollSwitch2,60,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:W6,0,65535,4">
+<param name="4" value="hmiRollSwitch2,80,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:W6,0,65535,3">
+<param name="5" value="hmiRollSwitch2,100,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:W6,0,65535,2">
+<param name="6" value="hmiRollSwitch2,120,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:W6,0,65535,1">
+<param name="7" value="hmiRollSwitch2,140,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:W6,0,65535,0">
+<param name="8" value="hmiDigital,60,1,140,33,1,2,3,4,5,6,7,8,9,M:W0,0,100,MW0 , ,2">
+<param name="Hint8" value="Shows the value of MW0 as an unsigned integer. Variable name is M:W0. The prefix M specifies Markers(Flags),W means unsigned int, 0 is the start address.">
+<param name="9" value="hmiDigital,250,135,240,33,1,2,3,4,5,6,7,8,9,DB1:C8,0,100,DB1:DBB8 unsigned , ,0">
+<param name="10" value="hmiDigital,250,165,240,33,1,2,3,4,5,6,7,8,9,DB1:B8,0,100,DB1:DBB8 signed , ,0">
+<param name="11" value="hmiRollSwitch2,300,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:C8,0,255,2">
+<param name="12" value="hmiRollSwitch2,320,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:C8,0,255,1">
+<param name="13" value="hmiRollSwitch2,340,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:C8,0,255,0">
+
+<param name="14" value="hmiDigital,500,135,240,33,1,2,3,4,5,6,7,8,9,DB1:U16,0,100,DB1:DBD16 unsigned , ,0">
+<param name="15" value="hmiDigital,500,165,240,33,1,2,3,4,5,6,7,8,9,DB1:L16,0,100,DB1:DBD16 signed , ,0">
+<param name="16" value="hmiRollSwitch2,500,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,9">
+<param name="17" value="hmiRollSwitch2,520,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,8">
+<param name="18" value="hmiRollSwitch2,540,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,7">
+<param name="19" value="hmiRollSwitch2,560,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,6">
+<param name="20" value="hmiRollSwitch2,580,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,5">
+<param name="21" value="hmiRollSwitch2,600,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,4">
+<param name="22" value="hmiRollSwitch2,620,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,3">
+<param name="23" value="hmiRollSwitch2,640,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,2">
+<param name="24" value="hmiRollSwitch2,660,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,1">
+<param name="25" value="hmiRollSwitch2,680,240,20,80,12,0,7,15.0,8.0,9.0,10,0,7,DB1:U16,0,4294967295,0">
+
+<param name="26" value="hmiDigital,500,335,140,33,1,2,3,4,5,6,7,8,9,I:C0,0,100,Input Byte 0: , ,0">
+
+</applet>

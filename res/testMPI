@@ -1,0 +1,1 @@
+java -classpath ./:./comm.jar  org.libnodave.tests.TestMPI $1 $2 $3 $4 $5 $6
